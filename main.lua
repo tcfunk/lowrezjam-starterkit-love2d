@@ -3,7 +3,7 @@ gfx = love.graphics
 function love.load()
   rng = love.math.newRandomGenerator()
 
-  windowWidth, windowHeight, _ = love.window.getMode()
+  windowWidth, windowHeight, windowFlags = love.window.getMode()
   gScaleX, gScaleY = windowWidth/64, windowHeight/64
 
   -- Sweet, delicious pixels
@@ -25,4 +25,10 @@ function love.draw()
 
   -- Draw the low-rez canvas on top of the normal one
   gfx.draw(lowrezCanvas, 0, 0, 0, gScaleX, gScaleY)
+end
+
+-- Enforce aspect ratio
+function love.resize(x, y)
+  love.window.setMode(x, x, windowFlags)
+  gScaleX, gScaleY = x/64, x/64
 end
