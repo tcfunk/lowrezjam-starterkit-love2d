@@ -41,3 +41,10 @@ function love.resize(x, y)
   love.window.setMode(x, x, windowFlags)
   gScaleX, gScaleY = x/64, x/64
 end
+
+function love.keypressed(k, s, r)
+  -- Quick exit option
+  if s == 'escape' then
+    love.event.quit()
+  end
+end
